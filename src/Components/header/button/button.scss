@@ -1,0 +1,48 @@
+@import "../../../assets/scss/_vars.scss";
+
+.button {
+  min-width: 113px;
+  min-height: 38px;
+  background-color: $primaryColor;
+  border: none;
+  border-radius: 4px;
+  color: $whiteColor;
+  font-weight: 500;
+  padding: 10px 32px;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: $darkPrimaryColor;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 200px;
+
+  &-btn {
+    color: $primaryColor;
+    border: none;
+    background-color: unset;
+    outline: none;
+    cursor: pointer;
+    padding: 0 1px 0 0;
+    height: min-content;
+    font-weight: bold;
+    margin: 0 0 0 32px;
+
+    &:hover {
+      color: $darkPrimaryColor;
+    }
+  }
+}
+
