@@ -1,3 +1,45 @@
-.footer-container{
-  background: #F2F2F2
+@import "../../assets/scss/_vars.scss";
+
+.footer {
+  background-color: $lightColor;
+  padding: 22px 0 25px;
+  width: 100%;
+  margin-top: 100px;
+
+  &-body {
+    display: flex;
+  }
+
+  &-htcLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px 40px 0 0;
+  }
+
+  &-contacts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-address {
+    margin: 0 0 8px 0;
+    letter-spacing: -0.07px;
+  }
+
+  &-numbers {
+    margin: 0 0 11px 0;
+  }
+
+  &-htcLink {
+    text-decoration: none;
+    font-weight: 500;
+    color: rgba(31, 71, 102, 1);
+    width: max-content;
+
+    &:visited {
+      color: rgba(31, 71, 102, 1);
+
+    }
+  }
 }

@@ -1,21 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.scss';
+
 import './assets/scss/main.scss'
-import App from './App';
+
 import {BrowserRouter as Router} from 'react-router-dom'
 
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
+import {route} from "./routes";
+
+import Layout from "./Components/layout/layout";
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Provider store={store}>
-        <App/>
-      </Provider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Router>
+            <Provider store={store}>
+                <Layout>
+                    {route()}
+                </Layout>
+            </Provider>
+        </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
 );

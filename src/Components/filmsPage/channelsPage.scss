@@ -1,0 +1,49 @@
+.channel{
+  display: flex;
+  justify-content: center;
+}
+.channel-cards {
+  display: grid;
+  justify-content: center;
+  height: 700px;
+
+  text-align: start;
+  margin-top: 27px;
+  overflow-y: auto;
+}
+.channel-card {
+
+
+  &-body {
+    background: #f2f2f2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(10px, 1fr) minmax(10px, 1fr))  ;
+    height: 162px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    justify-content: start;
+    width: 1180px;
+    grid-auto-flow: column;
+
+    &-img {
+     justify-self: center;
+      align-self: center;
+    }
+
+    &-content {
+      text-align: start;
+      //justify-self: center;
+      align-self: center;
+      //margin: 32px 0 0 0;
+
+    }
+  }
+
+  &-time-one {
+    color: #E5261E;
+  }
+
+  &-time span, &-time-one span {
+    margin-right: 16px;
+  }
+}

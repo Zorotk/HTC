@@ -1,7 +1,6 @@
 import React from 'react';
 import './header.scss'
 
-
 import Input from "./input/input";
 import Button from "./button/button";
 import Logo from "./logo/logo";
