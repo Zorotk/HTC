@@ -5,6 +5,7 @@ import axios from "axios";
 const initialState = {
     channels: [],
     films: [],
+    showDescription: false,
     login: '',
     password: +'',
     auth: {'login': 'test', 'password': 12345, 'indefinite': true}
@@ -30,20 +31,23 @@ const toolkitSlice = createSlice({
         setFilms(state, action) {
             state.films = action.payload
         },
-        progres(state, action) {
-            state.progressValue = action.payload
-        },
-        setlogin(state, action) {
-            state.login = action.payload
-        },
-        setpassword(state, {payload}) {
-            state.password = payload
-        },
-        setauth(state, {payload}) {
-            state.auth.indefinite = payload
+        toggleDescription(state, {payload}) {
+            state.showDescription = payload
         }
+        // progres(state, action) {
+        //     state.progressValue = action.payload
+        // },
+        // setlogin(state, action) {
+        //     state.login = action.payload
+        // },
+        // setpassword(state, {payload}) {
+        //     state.password = payload
+        // },
+        // setauth(state, {payload}) {
+        //     state.auth.indefinite = payload
+        // }
     }
 })
 
 export default toolkitSlice.reducer
-export const {progres, setlogin, setpassword, setauth} = toolkitSlice.actions
+export const {progres, setlogin, setpassword, setauth,toggleDescription} = toolkitSlice.actions

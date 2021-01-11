@@ -1,11 +1,14 @@
 .header-container {
+  margin-top: 35px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 380px));
+  grid-gap: 1rem;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
-//max-width: 1440px;
-  height: 40px;
-  width: 100%;
 }
 
+.auth {
+  justify-self: flex-end;
+  align-self: center;
+}
 

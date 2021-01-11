@@ -1,16 +1,17 @@
 import React, {useEffect} from 'react';
 import './filmsPage.scss'
-import {Provider, useDispatch, useSelector} from "react-redux";
-import {fetchData} from "../../redux/reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchData, toggleDescription} from "../../redux/reducer";
 
 import photoOne from '../../assets/img/smile.png'
 import photoTwo from '../../assets/img/sad.png'
 import photoThree from '../../assets/img/alien.png'
 import photoFour from '../../assets/img/ghost.png'
 import Nav from "../navigation/nav";
+import {useHistory} from 'react-router-dom'
 
 const FilmsPage = () => {
-
+    const history = useHistory()
     const films = useSelector(state => state.film.films)
     const dispatch = useDispatch()
 
@@ -18,6 +19,10 @@ const FilmsPage = () => {
     useEffect(() => {
         dispatch(fetchData('films'))
     }, [dispatch])
+    const descriptionHandler = (id) => {
+        dispatch(toggleDescription(id+1))
+        history.push(`/description/${id}`)
+    }
     return (
         <article>
             <Nav/>
@@ -27,8 +32,9 @@ const FilmsPage = () => {
             <div className={'films-cards'}>
 
                 {films.map(el => (<div key={el.id}>
-                    <div className={'film-card'}>
-
+                    <div className={'film-card'} onClick={() => {
+                        descriptionHandler(el.id)
+                    }}>
                         <img src={el.photoSrc} alt="imgFilm"/>
                         {el.title}
                     </div>
