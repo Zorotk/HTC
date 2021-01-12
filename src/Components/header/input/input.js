@@ -1,10 +1,11 @@
 import React from 'react';
 import './input.scss'
-const Input = ({className,props}) => {
+
+const Input = ({className, props, width,onChange,value}) => {
 
     return (
         <div>
-            <input type="text" className={`input ${className}`} {...props}/>
+            <input style={{width: `${width}px`}} value={value} onChange={onChange} type="text" className={`input ${className}`} {...props}/>
         </div>
     );
 };

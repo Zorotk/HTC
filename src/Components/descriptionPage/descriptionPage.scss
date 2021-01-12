@@ -17,7 +17,6 @@
     font-size: 33px;
     cursor: pointer;
     text-decoration: none;
-
   }
 
   &-films {
@@ -32,7 +31,7 @@
 
   &-comments {
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(135px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(780px, 1fr));
     justify-content: center;
 
 
@@ -43,7 +42,7 @@
     text-align: center;
   }
 
-  &-comment {
+  &-comment-body {
     margin-top: 16px;
     height: 135px;
     width: 780px;
@@ -51,10 +50,17 @@
     background: #F2F2F2;
     padding: 16px;
     box-sizing: border-box;
+
+
     &-name {
 
     }
   }
+}
+
+.description-comment-layout {
+  display: flex;
+  justify-content: center;
 }
 
 .description-film-container {

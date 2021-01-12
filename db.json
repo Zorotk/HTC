@@ -185,9 +185,27 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "comment": "aaaaaaaa",
+      "id": 3
+    },
+    {
+      "comment": "zzzzzzzzzzz",
+      "id": 4
+    },
+    {
+      "comment": "xxxxxxxxxx",
+      "id": 5
+    },
+    {
+      "comment": "nnnnnnnnnn",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "id": 5,
+      "login": "Pavel",
+      "password": "12345"
     }
   ]
 }

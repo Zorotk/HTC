@@ -1,19 +1,27 @@
-import React, {useEffect} from 'react';
+import React, { useState} from 'react';
 import './descriptionPage.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 import Button from "../header/button/button";
+import {addComments} from "../../redux/reducer";
+
 
 const DescriptionPage = () => {
     const showDescription = useSelector(state => state.film.showDescription)
     const films = useSelector(state => state.film.films)
+    const filmsComments = useSelector(state => state.film.filmsComments)
     const dispatch = useDispatch()
+    const [inputValue, setinputValue] = useState('')
 
-    useEffect(() => {
-        if (showDescription) {
-            console.log('gg')
-        }
-    }, [showDescription])
+
+    const formHandler = (e) => {
+        e.preventDefault()
+        dispatch(addComments(inputValue))
+    }
+    const deleteComment = () => {
+
+    }
+
     return (
         <div className={'description'}>
             <div className={'description-films'}>
@@ -43,22 +51,25 @@ const DescriptionPage = () => {
 
                 </div>
             </div>
-
-
             <div className="description-comments">
                 <h2>Комментарии</h2>
-                <form action="">
-                    <textarea className={'description-input'} placeholder={'Введите комментарий...'} name="comments"
+                <form>
+                    <textarea onChange={(e) => setinputValue(e.target.value)} className={'description-input'}
+                              placeholder={'Введите комментарий...'} name="comments"
                               id="" cols="30" rows="10"></textarea>
-                    <Button>Опубликовать</Button>
+                    <Button onClick={formHandler}>Опубликовать</Button>
                 </form>
-
-
-                <div className="description-comment">
-                    1
-                </div>
-                <div className="description-comment">
-                    2
+                <div>
+                    {filmsComments.map((el, i) => (
+                            <div key={i} className={'description-comment-layout'}>
+                                <div className={'description-comment-body'}>
+                                    <div>'name'</div>
+                                    <div className="description-comment">{el}</div>
+                                </div>
+                                <span onClick={() => deleteComment(i)} className="description-comment-x">X</span>
+                            </div>
+                        )
+                    )}
                 </div>
             </div>
         </div>

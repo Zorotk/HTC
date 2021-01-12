@@ -4,14 +4,12 @@
   grid-gap: 1rem;
   justify-content: center;
   align-items: center;
-
 }
 
 .film-card {
   display: flex;
   flex-direction: column;
   height: 370px;
-
 }
 
 .film-card :hover {
@@ -76,7 +74,6 @@
   justify-content: space-around;
   height: 208px;
   width: 280px;
-
   color: white;
   cursor: pointer;
   border-radius: 6px;

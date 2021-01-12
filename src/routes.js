@@ -1,7 +1,7 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
-import channelsPage from "./Components/filmsPage/channelsPage";
+import channelsPage from "./Components/films/channelsPage";
 import FilmsPage from "./Components/channelsPage/filmsPage";
 import DescriptionPage from "./Components/descriptionPage/descriptionPage";
 
