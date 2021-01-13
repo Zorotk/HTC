@@ -1,7 +1,8 @@
-.channel{
+.channel {
   display: flex;
   justify-content: center;
 }
+
 .channel-cards {
   display: grid;
   justify-content: center;
@@ -11,13 +12,12 @@
   margin-top: 27px;
   overflow-y: auto;
 }
+
 .channel-card {
-
-
   &-body {
     background: #f2f2f2;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(10px, 1fr) minmax(10px, 1fr))  ;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr) minmax(10px, 2fr));
     height: 162px;
     border-radius: 8px;
     margin-bottom: 16px;
@@ -25,18 +25,26 @@
     width: 1180px;
     grid-auto-flow: column;
 
+
     &-img {
-     justify-self: center;
+      justify-self: center;
       align-self: center;
     }
-
     &-content {
       text-align: start;
-      //justify-self: center;
       align-self: center;
-      //margin: 32px 0 0 0;
-
+&-name{
+  font-family: Rubik;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 17px;
+}
     }
+
   }
 
   &-time-one {

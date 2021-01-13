@@ -1,9 +1,9 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
-import channelsPage from "./Components/films/channelsPage";
-import FilmsPage from "./Components/channelsPage/filmsPage";
-import DescriptionPage from "./Components/descriptionPage/descriptionPage";
+import channelsPage from "./pages/channels/channelsPage";
+import FilmsPage from "./pages/filmsPage/filmsPage";
+import DescriptionPage from "./pages/descriptionPage/descriptionPage";
 
 
 export const route = () => {

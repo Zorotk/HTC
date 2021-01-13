@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import './descriptionPage.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
-import Button from "../header/button/button";
+
 import {addComment, fetchComments, fetchDeletedComment, setLoading} from "../../redux/reducer";
 import useLocalStorage from "../../hooks/localStorage";
+import Button from "../../Components/header/button/button";
 
 
 const DescriptionPage = () => {
@@ -37,6 +38,7 @@ const DescriptionPage = () => {
                             <img src={el.photoSrc} alt="imgFilm"/>
                         </div>
                     ))}
+
                 </div>
                 <div className={'description-film'}>
                     {films.filter(el => el.id === showDescription - 1).map(el => (
@@ -56,7 +58,6 @@ const DescriptionPage = () => {
 
                 </div>
             </div>
-
 
 
             <div className="description-comments">

@@ -7,8 +7,9 @@ import photoOne from '../../assets/img/smile.png'
 import photoTwo from '../../assets/img/sad.png'
 import photoThree from '../../assets/img/alien.png'
 import photoFour from '../../assets/img/ghost.png'
-import Nav from "../navigation/nav";
+
 import {useHistory} from 'react-router-dom'
+import Nav from "../../Components/navigation/nav";
 
 const FilmsPage = () => {
     const history = useHistory()
