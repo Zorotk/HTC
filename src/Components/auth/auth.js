@@ -11,8 +11,7 @@ const Auth = () => {
     const login = useSelector(state => state.film.login)
     const password = useSelector(state => state.film.password)
     const dispatch = useDispatch()
-    const setLogins = (e) => {
-        e.preventDefault()
+    const setLogins = () => {
         settoken(login)
         dispatch(setLogin(''))
         dispatch(setmodalActive(false))

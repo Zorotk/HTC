@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './filmsPage.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {fetchData, toggleDescription} from "../../redux/reducer";
@@ -14,15 +14,24 @@ const FilmsPage = () => {
     const history = useHistory()
     const films = useSelector(state => state.film.films)
     const dispatch = useDispatch()
-
-
+    const searchText = useSelector(state => state.film.search)
+    const [genres, setgenres] = useState()
     useEffect(() => {
         dispatch(fetchData('films'))
     }, [dispatch])
     const descriptionHandler = (id) => {
-        dispatch(toggleDescription(id+1))
+        dispatch(toggleDescription(id + 1))
         history.push(`/description/${id}`)
     }
+    const data = films.filter((item) =>
+        Object.values(item).some((value) =>
+            typeof value !== "string"
+                ? value === Number(searchText)
+                : value.includes(searchText)
+        )
+    ).filter(item => genres === undefined ? item : item.genre === genres);
+
+
     return (
         <article>
             <Nav/>
@@ -31,7 +40,7 @@ const FilmsPage = () => {
             </div>
             <div className={'films-cards'}>
 
-                {films.map(el => (<div key={el.id}>
+                {data.map(el => (<div key={el.id}>
                     <div className={'film-card'} onClick={() => {
                         descriptionHandler(el.id)
                     }}>
@@ -42,24 +51,24 @@ const FilmsPage = () => {
             </div>
 
             <aside className={'films-genre-cards'}>
-                <div className={'films-genre-cards-bg-y genre-card'}>
+                <div className={'films-genre-cards-bg-y genre-card'} onClick={() => setgenres('комедия')}>
                     <img src={photoOne} alt=""/>
                     <div>Комедии</div>
                 </div>
-                <div className={'films-genre-cards-bg-p genre-card'}>
+                <div className={'films-genre-cards-bg-p genre-card'} onClick={() => setgenres('драма')}>
                     <img src={photoTwo} alt=""/>
                     <div>
                         Драмы
                     </div>
                 </div>
-                <div className={'films-genre-cards-bg-b genre-card'}>
+                <div className={'films-genre-cards-bg-b genre-card'} onClick={() => setgenres('Фантастика')}>
                     <img src={photoThree} alt=""/>
                     <div>
                         Фантастика
                     </div>
 
                 </div>
-                <div className={'films-genre-cards-bg-g genre-card'}>
+                <div className={'films-genre-cards-bg-g genre-card'} onClick={() => setgenres('ужасы')}>
                     <img src={photoFour} alt=""/>
                     <div>
                         Ужасы

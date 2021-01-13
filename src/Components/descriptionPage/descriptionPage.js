@@ -1,26 +1,31 @@
-import React, { useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './descriptionPage.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 import Button from "../header/button/button";
-import {addComments} from "../../redux/reducer";
+import {addComment, fetchComments, fetchDeletedComment, setLoading} from "../../redux/reducer";
+import useLocalStorage from "../../hooks/localStorage";
 
 
 const DescriptionPage = () => {
     const showDescription = useSelector(state => state.film.showDescription)
     const films = useSelector(state => state.film.films)
+    const loading = useSelector(state => state.film.loading)
     const filmsComments = useSelector(state => state.film.filmsComments)
     const dispatch = useDispatch()
     const [inputValue, setinputValue] = useState('')
-
-
+    const [token,] = useLocalStorage('tokenLogin')
+    useEffect(() => {
+        dispatch(fetchComments()).then(() => dispatch(setLoading(false)))
+    }, [dispatch])
     const formHandler = (e) => {
         e.preventDefault()
-        dispatch(addComments(inputValue))
+        dispatch(addComment({'avtor': token, "comment": inputValue}))
     }
-    const deleteComment = () => {
+    const deleteComment = (id) => {
+        dispatch(fetchDeletedComment(id))
+    }
 
-    }
 
     return (
         <div className={'description'}>
@@ -51,26 +56,32 @@ const DescriptionPage = () => {
 
                 </div>
             </div>
+
+
+
             <div className="description-comments">
                 <h2>Комментарии</h2>
-                <form>
+                <form className={'description-comment-layout'}>
                     <textarea onChange={(e) => setinputValue(e.target.value)} className={'description-input'}
                               placeholder={'Введите комментарий...'} name="comments"
                               id="" cols="30" rows="10"></textarea>
                     <Button onClick={formHandler}>Опубликовать</Button>
                 </form>
-                <div>
-                    {filmsComments.map((el, i) => (
-                            <div key={i} className={'description-comment-layout'}>
-                                <div className={'description-comment-body'}>
-                                    <div>'name'</div>
-                                    <div className="description-comment">{el}</div>
+                {loading ? <div>Loading...</div> : <div>
+                    {filmsComments.flat().map((el, i) => {
+                            return (
+                                <div key={i} className={'description-comment-layout'}>
+                                    <div className={'description-comment-body'}>
+                                        <div className={'description-comment-body-name'}>{el.avtor}</div>
+                                        <div className="description-comment">{el.comment}</div>
+                                    </div>
+                                    {token === el.avtor ? <span onClick={() => deleteComment(el.id)}
+                                                                className="description-comment-x">X</span> : ""}
                                 </div>
-                                <span onClick={() => deleteComment(i)} className="description-comment-x">X</span>
-                            </div>
-                        )
+                            )
+                        }
                     )}
-                </div>
+                </div>}
             </div>
         </div>
 

@@ -12,3 +12,32 @@
   align-self: center;
 }
 
+.search-auth {
+  display: flex;
+  justify-content: flex-end;
+
+  &-input {
+    width: 112px;
+    border: none;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+
+  &-btn {
+    color: #e5261e;
+    border: none;
+    background-color: unset;
+    outline: none;
+    cursor: pointer;
+    padding: 0 1px 0 0;
+    height: min-content;
+    font-weight: bold;
+    margin: 13px;
+  }
+}

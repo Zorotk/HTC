@@ -9,11 +9,9 @@ const ChannelsPage = () => {
     const channels = useSelector(state => state.film.channels)
     const dispatch = useDispatch()
 
-
     useEffect(() => {
         dispatch(fetchData('channels'))
     }, [dispatch])
-
 
     return (
         <div>

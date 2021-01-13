@@ -29,13 +29,7 @@
     height: 460px;
   }
 
-  &-comments {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(780px, 1fr));
-    justify-content: center;
 
-
-  }
 
   &-comments h2 {
     align-self: end;
@@ -44,23 +38,30 @@
 
   &-comment-body {
     margin-top: 16px;
-    height: 135px;
+
     width: 780px;
     border-radius: 8px;
     background: #F2F2F2;
     padding: 16px;
     box-sizing: border-box;
 
-
     &-name {
-
+      font-family: Rubik;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
     }
   }
 }
 
 .description-comment-layout {
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  align-items: start;
+  box-sizing: border-box;
 }
 
 .description-film-container {
@@ -94,4 +95,14 @@
   //background: #E5261E;
   //opacity: 0.15;
   border-radius: 8px;
+}
+.description-comment-x{
+  position: relative;
+  top: 15px;
+  height: 14.727920532226562px;
+  width: 14.727921485900879px;
+  color: #E5261E;
+  margin-left: 15px;
+;
+
 }
