@@ -7,7 +7,6 @@ import DescriptionPage from "./pages/descriptionPage/descriptionPage";
 
 
 export const route = () => {
-
     return (
         <Switch>
             <Route path='/films' exact component={FilmsPage}/>
@@ -16,6 +15,4 @@ export const route = () => {
             <Redirect to='/films'/>
         </Switch>
     )
-
-
 }

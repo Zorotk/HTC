@@ -61,6 +61,7 @@ const DescriptionPage = () => {
 
 
             <div className="description-comments">
+
                 <h2>Комментарии</h2>
                 <form className={'description-comment-layout'}>
                     <textarea onChange={(e) => setinputValue(e.target.value)} className={'description-input'}

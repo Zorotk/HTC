@@ -4,18 +4,71 @@
   grid-gap: 1rem;
   justify-content: center;
   align-items: center;
+
 }
 
 .film-card {
   display: flex;
   flex-direction: column;
   height: 370px;
+  margin-top: 26px;
+
+  &-name {
+    margin-top: 16px;
+    font-family: Rubik;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+  }
 }
 
-.film-card :hover {
+.card {
+  position: relative;
+}
+
+.film-card-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  height: 338px;
+  display: none;
+  overflow: auto;
+  color: #F2F2F2;
   background: #333333;
   opacity: 0.8;
-  border-radius: 8px;
+  border-radius: 8px;;
+}
+
+.card:hover .film-card-info {
+  display: block;
+  cursor: pointer;
+}
+
+.films-genre {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  //margin-top: 30px;
+  margin-top: 80px;
+
+  &-title {
+    grid-column: 3/-5;
+    height: 28px;
+    width: 134px;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: right;
+  }
 }
 
 .films-news {
@@ -36,7 +89,7 @@
     font-weight: 500;
     line-height: 28px;
     letter-spacing: 0em;
-    text-align: right;
+    text-align: center;
   }
 }
 
@@ -47,7 +100,7 @@
   grid-gap: 1rem;
   justify-content: center;
   align-items: center;
-  margin-top: 75px;
+  margin-top: 16px;
 
 
   &-bg-y {
@@ -71,12 +124,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   height: 208px;
   width: 280px;
   color: white;
   cursor: pointer;
   border-radius: 6px;
+
+  &-title {
+    position: relative;
+    bottom: -32px;
+    font-family: Rubik;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+  }
 }
 
 .genre-card:hover {

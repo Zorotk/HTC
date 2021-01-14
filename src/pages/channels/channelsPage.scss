@@ -52,6 +52,16 @@
   }
 
   &-time span, &-time-one span {
-    margin-right: 16px;
+    margin:0 16px 16px 0;
   }
+}
+.channel-card-time,.channel-card-time-one{
+  margin-bottom: 12px;
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+
+
 }

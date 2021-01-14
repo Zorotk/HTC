@@ -41,43 +41,48 @@ const FilmsPage = () => {
             </div>
             <div className={'films-cards'}>
 
-                {data.map(el => (<div key={el.id}>
+                {data.map(el => (<div key={el.id} >
                     <div className={'film-card'} onClick={() => {
                         descriptionHandler(el.id)
                     }}>
-                        <img src={el.photoSrc} alt="imgFilm"/>
-                        {el.title}
+                        <div className={'card'}>
+                            <div className="film-card-info">{el.description}</div>
+                            <img src={el.photoSrc} alt="imgFilm"/>
+                        </div>
+
+
+                       <div className={'film-card-name'}>{el.title}</div>
                     </div>
                 </div>))}
             </div>
-
+            <div className={'films-genre'}>
+                <div className={'films-news-title'}>Жанры</div>
+            </div>
             <aside className={'films-genre-cards'}>
                 <div className={'films-genre-cards-bg-y genre-card'} onClick={() => setgenres('комедия')}>
                     <img src={photoOne} alt=""/>
-                    <div>Комедии</div>
+                    <div className={'genre-card-title'}>Комедии</div>
                 </div>
                 <div className={'films-genre-cards-bg-p genre-card'} onClick={() => setgenres('драма')}>
                     <img src={photoTwo} alt=""/>
-                    <div>
+                    <div className={'genre-card-title'}>
                         Драмы
                     </div>
                 </div>
                 <div className={'films-genre-cards-bg-b genre-card'} onClick={() => setgenres('Фантастика')}>
                     <img src={photoThree} alt=""/>
-                    <div>
+                    <div className={'genre-card-title'}>
                         Фантастика
                     </div>
-
                 </div>
                 <div className={'films-genre-cards-bg-g genre-card'} onClick={() => setgenres('ужасы')}>
                     <img src={photoFour} alt=""/>
-                    <div>
+                    <div className={'genre-card-title'}>
                         Ужасы
                     </div>
                 </div>
             </aside>
         </article>
-
     );
 };
 
