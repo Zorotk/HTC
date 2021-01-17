@@ -1,7 +1,7 @@
 import React from 'react';
 import './auth.scss'
-import Button from "../header/button/button";
-import Input from "../header/input/input";
+import Button from "../button/button";
+import Input from "../input/input";
 import {setLogin, setmodalActive, setPassword} from "../../redux/reducer";
 import {useDispatch, useSelector} from "react-redux";
 import useLocalStorage from "../../hooks/localStorage";

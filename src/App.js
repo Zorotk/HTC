@@ -1,14 +1,15 @@
 import React from 'react'
 import './App.scss';
-import Header from "./Components/header/header";
+import Layout from "./Components/layout/layout";
+import {route} from "./routes";
+
 
 const App = () => {
     return (
         <div className={'layout-container'}>
-            <Header/>
-            <article className="tab-container">
-
-            </article>
+            <Layout>
+                {route()}
+            </Layout>
         </div>
     );
 }

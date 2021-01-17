@@ -1,5 +1,5 @@
 .header-container {
-  margin-top: 35px;
+  padding-top: 33px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 380px));
   grid-gap: 1rem;
@@ -26,7 +26,6 @@
     line-height: 19px;
     letter-spacing: 0em;
     text-align: left;
-
   }
 
   &-btn {
@@ -40,4 +39,8 @@
     font-weight: bold;
     margin: 13px;
   }
+}
+.header-item-search{
+  display: flex;
+
 }

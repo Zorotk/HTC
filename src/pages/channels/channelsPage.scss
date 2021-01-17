@@ -1,15 +1,16 @@
 .channel {
-  display: flex;
+  display: grid;
   justify-content: center;
+
 }
 
 .channel-cards {
-  display: grid;
-  justify-content: center;
-  height: 700px;
-
+  //display: grid;
+  //justify-content: center;
+  height: 696px;
   text-align: start;
   margin-top: 27px;
+  //min-width: 1180px;
   overflow-y: auto;
 }
 
@@ -17,12 +18,13 @@
   &-body {
     background: #f2f2f2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr) minmax(10px, 2fr));
-    height: 162px;
+    grid-template-columns: repeat(auto-fit, minmax(115px, 400px) minmax(100px, 780px));
     border-radius: 8px;
     margin-bottom: 16px;
     justify-content: start;
-    width: 1180px;
+    padding-top: 21px;
+    padding-bottom: 19px;
+    //width: 1180px;
     grid-auto-flow: column;
 
 
@@ -30,21 +32,27 @@
       justify-self: center;
       align-self: center;
     }
+
     &-content {
       text-align: start;
       align-self: center;
-&-name{
-  font-family: Rubik;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
-  margin-bottom: 17px;
-}
+
+      &-name {
+        font-family: Rubik;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 17px;
+      }
     }
 
+  }
+
+  &-body:last-child {
+    margin: 0;
   }
 
   &-time-one {
@@ -52,16 +60,20 @@
   }
 
   &-time span, &-time-one span {
-    margin:0 16px 16px 0;
+    margin: 0 16px 16px 0;
   }
+
 }
-.channel-card-time,.channel-card-time-one{
+
+.channel-card-time, .channel-card-time-one {
   margin-bottom: 12px;
   font-family: Rubik;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 19px;
+}
 
-
+.channel-card-time:last-child {
+  margin: 0;
 }

@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './header.scss'
-import Input from "./input/input";
-import Button from "./button/button";
-import Logo from "./logo/logo";
+import Input from "../input/input";
+import Button from "../button/button";
+import Logo from "../logo/logo";
 import Modal from "../modal/modal";
 import Auth from "../auth/auth";
 import useLocalStorage from "../../hooks/localStorage";
@@ -29,7 +29,7 @@ const Header = () => {
             <div className="header-item logo">
                 <Logo/>
             </div>
-            <div className="header-item search">
+            <div className="header-item-search">
                 <Input className={'header-input-search'}
                        onChange={(e) => dispatch(setSearch(e.target.value))}
                        value={search}

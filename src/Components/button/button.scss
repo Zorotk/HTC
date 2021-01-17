@@ -1,4 +1,4 @@
-@import "../../../assets/scss/_vars.scss";
+@import "../../assets/scss/vars";
 
 .button {
   min-width: 113px;
@@ -24,10 +24,13 @@
 }
 
 .search {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: 200px;
+  //display: flex;
+  //  //justify-content: center;
+  //  //width: 100%;
+  //  //min-width: 200px;
+  display: grid;
+  grid-template-rows: repeat(auto-fit,1fr 2fr);
+  justify-self: left;
 
   &-btn {
     color: $primaryColor;

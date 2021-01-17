@@ -7,18 +7,14 @@ import {BrowserRouter as Router} from 'react-router-dom'
 
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
-import {route} from "./routes";
 
-import Layout from "./Components/layout/layout";
-
+import App from "./App";
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
             <Provider store={store}>
-                <Layout>
-                    {route()}
-                </Layout>
+                <App/>
             </Provider>
         </Router>
     </React.StrictMode>,

@@ -1,7 +1,7 @@
 import React from 'react';
 import './input.scss'
 
-const Input = ({className, props, width,onChange,value}) => {
+const Input = ({className, props, width=320,onChange,value}) => {
 
     return (
         <div>

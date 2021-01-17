@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 import {addComment, fetchComments, fetchDeletedComment, setLoading} from "../../redux/reducer";
 import useLocalStorage from "../../hooks/localStorage";
-import Button from "../../Components/header/button/button";
+import Button from "../../Components/button/button";
 
 
 const DescriptionPage = () => {
