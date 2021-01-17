@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 // json-server db.json --port 5000 --watch
-// json-server db.json  --watch
+
 const initialState = {
     loading: true,
     modalActive: false,

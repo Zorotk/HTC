@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, {useEffect} from 'react';
 import './header.scss'
 import Input from "../input/input";
 import Button from "../button/button";
@@ -17,10 +17,10 @@ const Header = () => {
     const dispatch = useDispatch()
     const login = useSelector(state => state.film.login)
     useEffect(() => {
-        if (login.length>0&&auth){
+        if (login.length > 0 && auth) {
             settoken(login)
         }
-    }, [login,auth])
+    }, [login, auth])
 
     const changeLogin = (value) => {
         settoken(value)
@@ -39,7 +39,7 @@ const Header = () => {
                 <div className={'search-btn'}>Найти</div>
             </div>
             <div className="header-item auth">
-                {token !== " "  ? <div className={'search-auth'}>
+                {token !== " " ? <div className={'search-auth'}>
                         <input className={'search-auth-input'}
                                onChange={(e) => changeLogin(e.target.value)}
                                value={token}/>

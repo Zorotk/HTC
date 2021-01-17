@@ -41,7 +41,7 @@ const FilmsPage = () => {
             </div>
             <div className={'films-cards'}>
 
-                {data.map(el => (<div key={el.id} >
+                {data.map(el => (<div key={el.id}>
                     <div className={'film-card'} onClick={() => {
                         descriptionHandler(el.id)
                     }}>
@@ -51,7 +51,7 @@ const FilmsPage = () => {
                         </div>
 
 
-                       <div className={'film-card-name'}>{el.title}</div>
+                        <div className={'film-card-name'}>{el.title}</div>
                     </div>
                 </div>))}
             </div>
