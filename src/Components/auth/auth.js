@@ -2,7 +2,7 @@ import React from 'react';
 import './auth.scss'
 import Button from "../button/button";
 import Input from "../input/input";
-import {setLogin, setmodalActive, setPassword} from "../../redux/reducer";
+import {setAuth, setLogin, setmodalActive, setPassword} from "../../redux/reducer";
 import {useDispatch, useSelector} from "react-redux";
 import useLocalStorage from "../../hooks/localStorage";
 
@@ -11,11 +11,13 @@ const Auth = () => {
     const login = useSelector(state => state.film.login)
     const password = useSelector(state => state.film.password)
     const dispatch = useDispatch()
-    const setLogins = () => {
+    const setLogins = (e) => {
+        e.preventDefault()
         settoken(login)
-        dispatch(setLogin(''))
         dispatch(setmodalActive(false))
+        dispatch(setAuth(true))
     }
+
 
     return (
         <div className={'auth-form'}>

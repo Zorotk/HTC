@@ -12,7 +12,8 @@ const initialState = {
     filmsComments: [],
     login: '',
     password: '',
-    search:''
+    search: '',
+    auth: false
 }
 
 
@@ -80,9 +81,12 @@ const toolkitSlice = createSlice({
         },
         setLoading(state, {payload}) {
             state.loading = payload
+        },
+        setAuth(state, {payload}) {
+            state.auth = payload
         }
     }
 })
 
 export default toolkitSlice.reducer
-export const {setSearch,setLoading, setmodalActive, setLogin, setPassword, addComments, toggleDescription} = toolkitSlice.actions
+export const {setAuth,setSearch, setLoading, setmodalActive, setLogin, setPassword, addComments, toggleDescription} = toolkitSlice.actions

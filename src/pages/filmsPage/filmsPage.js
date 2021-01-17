@@ -34,7 +34,7 @@ const FilmsPage = () => {
 
 
     return (
-        <article>
+        <main className={'main-content'}>
             <Nav/>
             <div className={'films-news'}>
                 <div className={'films-news-title'}>Новинки</div>
@@ -82,7 +82,7 @@ const FilmsPage = () => {
                     </div>
                 </div>
             </aside>
-        </article>
+        </main>
     );
 };
 

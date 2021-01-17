@@ -1,16 +1,12 @@
 .channel {
   display: grid;
   justify-content: center;
-
 }
 
 .channel-cards {
-  //display: grid;
-  //justify-content: center;
   height: 696px;
   text-align: start;
   margin-top: 27px;
-  //min-width: 1180px;
   overflow-y: auto;
 }
 
@@ -24,7 +20,6 @@
     justify-content: start;
     padding-top: 21px;
     padding-bottom: 19px;
-    //width: 1180px;
     grid-auto-flow: column;
 
 

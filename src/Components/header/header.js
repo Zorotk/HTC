@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import './header.scss'
 import Input from "../input/input";
 import Button from "../button/button";
@@ -11,14 +11,16 @@ import {setmodalActive, setSearch} from "../../redux/reducer";
 
 const Header = () => {
     const [token, settoken] = useLocalStorage('tokenLogin')
-    const [valueLogin, setvalueLogin] = useState('')
-    const modalActive = useSelector(state => state.film.modalActive)
-    const dispatch = useDispatch()
 
+    const modalActive = useSelector(state => state.film.modalActive)
+    const auth = useSelector(state => state.film.auth)
+    const dispatch = useDispatch()
     const login = useSelector(state => state.film.login)
     useEffect(() => {
-        setvalueLogin(token)
-    }, [token, login])
+        if (login.length>0&&auth){
+            settoken(login)
+        }
+    }, [login,auth])
 
     const changeLogin = (value) => {
         settoken(value)
@@ -37,9 +39,11 @@ const Header = () => {
                 <div className={'search-btn'}>Найти</div>
             </div>
             <div className="header-item auth">
-                {token !== " " ? <div className={'search-auth'}><input className={'search-auth-input'}
-                                                                       onChange={(e) => changeLogin(e.target.value)}
-                                                                       value={valueLogin}/>
+                {token !== " "  ? <div className={'search-auth'}>
+                        <input className={'search-auth-input'}
+                               onChange={(e) => changeLogin(e.target.value)}
+                               value={token}/>
+
                         <button className={'search-auth-btn'} onClick={() => settoken(" ")}>Выйти</button>
                     </div> :
                     <Button onClick={() => dispatch(setmodalActive(!modalActive))}>
