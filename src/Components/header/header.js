@@ -7,7 +7,7 @@ import Modal from "../modal/modal";
 import Auth from "../auth/auth";
 import useLocalStorage from "../../hooks/localStorage";
 import {useDispatch, useSelector} from "react-redux";
-import {setmodalActive, setSearch} from "../../redux/reducer";
+import {setAuth, setLogin, setmodalActive, setSearch} from "../../redux/reducer";
 
 const Header = () => {
     const [token, settoken] = useLocalStorage('tokenLogin')
@@ -19,12 +19,20 @@ const Header = () => {
     useEffect(() => {
         if (login.length > 0 && auth) {
             settoken(login)
+
         }
     }, [login, auth])
 
     const changeLogin = (value) => {
+        dispatch(setLogin(value))
         settoken(value)
     }
+    const authExit = () => {
+        settoken(" ")
+        dispatch(setAuth(false))
+    }
+
+
     const search = useSelector(state => state.film.search)
     return (
         <header className="header-container">
@@ -39,13 +47,15 @@ const Header = () => {
                 <div className={'search-btn'}>Найти</div>
             </div>
             <div className="header-item auth">
-                {token !== " " ? <div className={'search-auth'}>
+                {token !== " "
+                    ? <div className={'search-auth'}>
                         <input className={'search-auth-input'}
                                onChange={(e) => changeLogin(e.target.value)}
                                value={token}/>
 
-                        <button className={'search-auth-btn'} onClick={() => settoken(" ")}>Выйти</button>
-                    </div> :
+                        <button className={'search-auth-btn'} onClick={authExit}>Выйти</button>
+                    </div>
+                    :
                     <Button onClick={() => dispatch(setmodalActive(!modalActive))}>
                         войти
                     </Button>

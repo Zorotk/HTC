@@ -185,28 +185,18 @@
   ],
   "comments": [
     {
-      "avtor": "test",
-      "comment": "1",
-      "id": 1
-    },
-    {
-      "avtor": "test",
-      "comment": "12",
+      "avtor": "2",
+      "comment": "2",
       "id": 2
     },
     {
-      "avtor": "test",
-      "comment": "123",
+      "avtor": "3",
+      "comment": "3",
       "id": 3
     },
     {
-      "avtor": "test",
-      "comment": "1234",
-      "id": 4
-    },
-    {
-      "avtor": "test",
-      "comment": "12345",
+      "avtor": "1",
+      "comment": "test",
       "id": 5
     }
   ]

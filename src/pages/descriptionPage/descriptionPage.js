@@ -3,7 +3,7 @@ import './descriptionPage.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 
-import {addComment, fetchComments, fetchDeletedComment, setLoading} from "../../redux/reducer";
+import {addComment, fetchComments, fetchDeletedComment, setAuth, setLogin} from "../../redux/reducer";
 import useLocalStorage from "../../hooks/localStorage";
 import Button from "../../Components/button/button";
 
@@ -12,22 +12,29 @@ const DescriptionPage = () => {
     const showDescription = useSelector(state => state.film.showDescription)
     const films = useSelector(state => state.film.films)
     const loading = useSelector(state => state.film.loading)
+    const login = useSelector(state => state.film.login)
     const filmsComments = useSelector(state => state.film.filmsComments)
+    const auth = useSelector(state => state.film.auth)
     const dispatch = useDispatch()
     const [inputValue, setinputValue] = useState('')
     const [token,] = useLocalStorage('tokenLogin')
     useEffect(() => {
-        dispatch(fetchComments()).then(() => dispatch(setLoading(false)))
+        dispatch(fetchComments())
+        if (token !== ' ') {
+            dispatch(setAuth(true))
+            dispatch(setLogin(token))
+        }
     }, [dispatch])
     const formHandler = (e) => {
         e.preventDefault()
-        dispatch(addComment({'avtor': token, "comment": inputValue}))
-
+        dispatch(addComment({'avtor': login, "comment": inputValue}))
     }
-    const deleteComment = (id) => {
-        dispatch(fetchDeletedComment(id))
 
-    }
+    useEffect(() => {
+        if (token !== ' ') {
+            dispatch(setLogin(token))
+        }
+    }, [token])
 
     return (
         <div className={'description'}>
@@ -64,25 +71,24 @@ const DescriptionPage = () => {
             <div className="description-comments">
 
                 <h2>Комментарии</h2>
-                <form className={'description-comment-layout'}>
+                {auth ? <form className={'description-comment-layout'}>
                     <textarea onChange={(e) => setinputValue(e.target.value)} className={'description-input'}
                               placeholder={'Введите комментарий...'} name="comments"
                               id="" cols="30" rows="10"></textarea>
                     <Button onClick={formHandler}>Опубликовать</Button>
-                </form>
+                </form> : ""}
                 {loading ? <div>Loading...</div> : <div>
-                    {filmsComments.map((el, i) => {
-                            return (
-                                <div key={el.id} className={'description-comment-layout'}>
-                                    <div className={'description-comment-body'}>
-                                        <div className={'description-comment-body-name'}>{el.avtor}</div>
-                                        <div className="description-comment">{el.comment}</div>
-                                    </div>
-                                    {token === el.avtor ? <span onClick={() => deleteComment(el.id)}
-                                                                className="description-comment-x">X</span> : ""}
+                    {filmsComments.map(({id, comment, avtor}) =>
+                        (
+                            <div key={id} className={'description-comment-layout'}>
+                                <div className={'description-comment-body'}>
+                                    <div className={'description-comment-body-name'}>{avtor}</div>
+                                    <div className="description-comment">{comment}</div>
                                 </div>
-                            )
-                        }
+                                {login === avtor && auth ? <span onClick={() => dispatch(fetchDeletedComment(id))}
+                                                                 className="description-comment-x">X</span> : ""}
+                            </div>
+                        )
                     )}
                 </div>}
             </div>

@@ -28,6 +28,7 @@ export const fetchComments = createAsyncThunk("getComments",
     async (url, {dispatch}) => {
         const {data} = await axios(`http://localhost:5000/comments`)
         dispatch(toolkitSlice.actions.setComments(data))
+        dispatch(toolkitSlice.actions.setLoading(false))
     }
 );
 
@@ -89,4 +90,4 @@ const toolkitSlice = createSlice({
 })
 
 export default toolkitSlice.reducer
-export const {setAuth,setSearch, setLoading, setmodalActive, setLogin, setPassword, addComments, toggleDescription} = toolkitSlice.actions
+export const {setAuth,setSearch, setmodalActive, setLogin, setPassword,toggleDescription} = toolkitSlice.actions

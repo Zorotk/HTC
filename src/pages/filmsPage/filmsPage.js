@@ -40,7 +40,6 @@ const FilmsPage = () => {
                 <div className={'films-news-title'}>Новинки</div>
             </div>
             <div className={'films-cards'}>
-
                 {data.map(el => (<div key={el.id}>
                     <div className={'film-card'} onClick={() => {
                         descriptionHandler(el.id)
