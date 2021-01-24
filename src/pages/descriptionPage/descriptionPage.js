@@ -22,11 +22,12 @@ const DescriptionPage = () => {
     const formHandler = (e) => {
         e.preventDefault()
         dispatch(addComment({'avtor': token, "comment": inputValue}))
+
     }
     const deleteComment = (id) => {
         dispatch(fetchDeletedComment(id))
-    }
 
+    }
 
     return (
         <div className={'description'}>
@@ -70,9 +71,9 @@ const DescriptionPage = () => {
                     <Button onClick={formHandler}>Опубликовать</Button>
                 </form>
                 {loading ? <div>Loading...</div> : <div>
-                    {filmsComments.flat().map((el, i) => {
+                    {filmsComments.map((el, i) => {
                             return (
-                                <div key={i} className={'description-comment-layout'}>
+                                <div key={el.id} className={'description-comment-layout'}>
                                     <div className={'description-comment-body'}>
                                         <div className={'description-comment-body-name'}>{el.avtor}</div>
                                         <div className="description-comment">{el.comment}</div>
