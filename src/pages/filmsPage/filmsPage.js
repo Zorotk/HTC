@@ -36,8 +36,10 @@ const FilmsPage = () => {
     return (
         <main className={'main-content'}>
             <Nav/>
-            <div className={'films-news'}>
-                <div className={'films-news-title'}>Новинки</div>
+            <div className={'content-container'}>
+                <div className={'films-news'}>
+                    <div className={'films-news-title'}>Новинки</div>
+                </div>
             </div>
             <div className={'films-cards'}>
                 {data.map(el => (<div key={el.id}>
@@ -54,8 +56,13 @@ const FilmsPage = () => {
                     </div>
                 </div>))}
             </div>
-            <div className={'films-genre'}>
-                <div className={'films-news-title'}>Жанры</div>
+            <div className={'content-container'}>
+                <div className={'films-genre'}>
+
+                    <div className={'films-news-title'}>Жанры</div>
+
+
+                </div>
             </div>
             <aside className={'films-genre-cards'}>
                 <div className={'films-genre-cards-bg-y genre-card'} onClick={() => setgenres('комедия')}>

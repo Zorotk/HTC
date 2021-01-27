@@ -41,7 +41,7 @@ export const fetchDeletedComment = createAsyncThunk("fetchDeletedComment",
 
 export const addComment = createAsyncThunk("addComment",
     async (comment, {dispatch}) => {
-       const {data}= await axios.post(`http://localhost:5000/comments`, comment)
+        const {data} = await axios.post(`http://localhost:5000/comments`, comment)
         dispatch(toolkitSlice.actions.addComments(data))
     }
 );
@@ -69,7 +69,7 @@ const toolkitSlice = createSlice({
             state.filmsComments = state.filmsComments.filter(el => el.id !== payload)
         },
         setComments(state, {payload}) {
-            state.filmsComments=payload.reverse()
+            state.filmsComments = payload.reverse()
         },
         setLogin(state, action) {
             state.login = action.payload
@@ -90,4 +90,4 @@ const toolkitSlice = createSlice({
 })
 
 export default toolkitSlice.reducer
-export const {setAuth,setSearch, setmodalActive, setLogin, setPassword,toggleDescription} = toolkitSlice.actions
+export const {setAuth, setSearch, setmodalActive, setLogin, setPassword, toggleDescription} = toolkitSlice.actions

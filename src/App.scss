@@ -1,7 +1,7 @@
 @import "./assets/scss/_vars.scss";
 
 .layout-container {
-  height: 100vh;
+ min-height: 100vh;
 }
 
 
@@ -10,6 +10,8 @@
   height: 80%;
 }
 
-.main-content {
-  min-height: 68%;
+
+
+.main-container{
+  min-height: 84vh;
 }

@@ -1,6 +1,7 @@
 @import "../../assets/scss/_vars.scss";
 
 .footer {
+
   background-color: $lightColor;
   padding: 22px 0 25px;
   width: 100%;
@@ -20,6 +21,7 @@
   &-contacts {
     display: flex;
     flex-direction: column;
+
   }
 
   &-address {

@@ -48,17 +48,18 @@
   cursor: pointer;
 }
 
+.content-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
 .films-genre {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: 1rem;
-  justify-content: center;
+  display: flex;
   align-items: center;
-  //margin-top: 30px;
   margin-top: 80px;
 
   &-title {
-    grid-column: 3/-5;
+
     height: 28px;
     width: 134px;
     font-family: Rubik;
@@ -72,17 +73,9 @@
 }
 
 .films-news {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: 1rem;
-  justify-content: center;
-  align-items: center;
   margin-top: 30px;
 
   &-title {
-    grid-column: 3/-5;
-    height: 28px;
-    width: 134px;
     font-family: Rubik;
     font-size: 24px;
     font-style: normal;
