@@ -24,11 +24,11 @@ const Auth = () => {
             <div className={'auth-body'}>
                 <h2>Вход</h2>
                 <form>
-                    <Input className={'header-input-search'}
+                    <Input className={'header-input-search'} required
                            value={login} onChange={(e) => dispatch(setLogin(e.target.value))
                     }
                            props={{placeholder: 'Логин', type: "text"}} width={232}/>
-                    <Input className={'header-input-search'}
+                    <Input className={'header-input-search'} required
                            value={password} onChange={(e) => {
                         dispatch(setPassword(e.target.value))
                     }}

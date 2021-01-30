@@ -13,9 +13,8 @@ import Nav from "../../Components/navigation/nav";
 
 const FilmsPage = () => {
     const history = useHistory()
-    const films = useSelector(state => state.film.films)
+    const {films, search} = useSelector(({film}) => film)
     const dispatch = useDispatch()
-    const searchText = useSelector(state => state.film.search)
     const [genres, setgenres] = useState()
     useEffect(() => {
         dispatch(fetchData('films'))
@@ -27,8 +26,8 @@ const FilmsPage = () => {
     const data = films.filter((item) =>
         Object.values(item).some((value) =>
             typeof value !== "string"
-                ? value === Number(searchText)
-                : value.includes(searchText)
+                ? value === Number(search)
+                : value.includes(search)
         )
     ).filter(item => genres === undefined ? item : item.genre === genres);
 
@@ -42,17 +41,13 @@ const FilmsPage = () => {
                 </div>
             </div>
             <div className={'films-cards'}>
-                {data.map(el => (<div key={el.id}>
-                    <div className={'film-card'} onClick={() => {
-                        descriptionHandler(el.id)
-                    }}>
+                {data.map(({id, photoSrc, description, title}) => (<div key={id}>
+                    <div className={'film-card'} onClick={() => descriptionHandler(id)}>
                         <div className={'card'}>
-                            <div className="film-card-info">{el.description}</div>
-                            <img src={el.photoSrc} alt="imgFilm"/>
+                            <div className="film-card-info">{description}</div>
+                            <img src={photoSrc} alt="imgFilm"/>
                         </div>
-
-
-                        <div className={'film-card-name'}>{el.title}</div>
+                        <div className={'film-card-name'}>{title}</div>
                     </div>
                 </div>))}
             </div>

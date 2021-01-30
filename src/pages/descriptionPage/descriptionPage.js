@@ -9,12 +9,13 @@ import Button from "../../Components/button/button";
 
 
 const DescriptionPage = () => {
-    const showDescription = useSelector(state => state.film.showDescription)
-    const films = useSelector(state => state.film.films)
-    const loading = useSelector(state => state.film.loading)
-    const login = useSelector(state => state.film.login)
-    const filmsComments = useSelector(state => state.film.filmsComments)
-    const auth = useSelector(state => state.film.auth)
+    const {showDescription, films, loading, login, filmsComments, auth} = useSelector(({film}) => film)
+    // const showDescription = useSelector(state => state.film.showDescription)
+    // const films = useSelector(state => state.film.films)
+    // const loading = useSelector(state => state.film.loading)
+    // const login = useSelector(state => state.film.login)
+    // const filmsComments = useSelector(state => state.film.filmsComments)
+    // const auth = useSelector(state => state.film.auth)
     const dispatch = useDispatch()
     const [inputValue, setinputValue] = useState('')
     const [token,] = useLocalStorage('tokenLogin')
@@ -38,59 +39,56 @@ const DescriptionPage = () => {
 
     return (
         <div className={'description'}>
-            <div className={'description-films'}>
-                <div className={'description-film'}>
-                    {films.filter(el => el.id === showDescription - 1).map(el => (
-                        <div className={'description-film-container'} key={el.id}>
+            <div>
+                {films.filter(el => el.id === showDescription - 1).map(({id, photoSrc, title, genre, description}) => (
+                    <div className={'description-films'} key={id}>
+                        <div className={'description-film-container'}>
                             <NavLink to="/films" className={'description-back'}>{'<'}</NavLink>
-                            <img src={el.photoSrc} alt="imgFilm"/>
+                            <img src={photoSrc} alt="imgFilm"/>
                         </div>
-                    ))}
-
-                </div>
-                <div className={'description-film'}>
-                    {films.filter(el => el.id === showDescription - 1).map(el => (
-                        <div className={'description-name-container'} key={el.id}>
-                            <div className={'description-name'}>
-                                <span>Название: </span><span>{el.title}</span>
+                        <div className={'description-film'}>
+                            <div className={'description-name-container'}>
+                                <div className={'description-name'}>
+                                    <span>Название: </span><span>{title}</span>
+                                </div>
+                                <div className={'description-name'}>
+                                    <span>Жанр: </span><span>{genre}</span>
+                                </div>
+                                <div className={'description-name'}>{description}</div>
                             </div>
-                            <div className={'description-name'}>
-                                <span>Жанр: </span><span>{el.genre}</span>
-                            </div>
-                            <div className={'description-name des-style'}>{el.description}</div>
                         </div>
-                    ))}
-
-                </div>
-                <div className={'description-film'}>
-
-                </div>
+                    </div>
+                ))}
             </div>
 
 
             <div className="description-comments">
+                <div>
+                    <h2>Комментарии</h2>
+                </div>
 
-                <h2>Комментарии</h2>
-                {auth ? <form className={'description-comment-layout'}>
+                    {auth ? <form className={'description-comment-layout'}>
                     <textarea onChange={(e) => setinputValue(e.target.value)} className={'description-input'}
                               placeholder={'Введите комментарий...'} name="comments"
                               id="" cols="30" rows="10"></textarea>
-                    <Button onClick={formHandler}>Опубликовать</Button>
-                </form> : ""}
-                {loading ? <div>Loading...</div> : <div>
-                    {filmsComments.map(({id, comment, avtor}) =>
-                        (
-                            <div key={id} className={'description-comment-layout'}>
-                                <div className={'description-comment-body'}>
-                                    <div className={'description-comment-body-name'}>{avtor}</div>
-                                    <div className="description-comment">{comment}</div>
+                        <Button onClick={formHandler}>Опубликовать</Button>
+                    </form> : ""}
+                    {loading ? <div>Loading...</div> : <div>
+                        {filmsComments.map(({id, comment, avtor}) =>
+                            (
+                                <div key={id} className={'description-comment-layout'}>
+                                    <div className={'description-comment-body'}>
+                                        <div className={'description-comment-body-name'}>{avtor}</div>
+                                        <div className="description-comment">{comment}</div>
+                                    </div>
+                                    {login === avtor && auth ? <span onClick={() => dispatch(fetchDeletedComment(id))}
+                                                                     className="description-comment-x">X</span> : ""}
                                 </div>
-                                {login === avtor && auth ? <span onClick={() => dispatch(fetchDeletedComment(id))}
-                                                                 className="description-comment-x">X</span> : ""}
-                            </div>
-                        )
-                    )}
-                </div>}
+                            )
+                        )}
+                    </div>}
+
+
             </div>
         </div>
 
