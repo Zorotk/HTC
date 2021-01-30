@@ -24,15 +24,15 @@ const Auth = () => {
             <div className={'auth-body'}>
                 <h2>Вход</h2>
                 <form>
-                    <Input className={'header-input-search'} required
+                    <Input className={'header-input-search'}
                            value={login} onChange={(e) => dispatch(setLogin(e.target.value))
                     }
-                           props={{placeholder: 'Логин', type: "text"}} width={232}/>
-                    <Input className={'header-input-search'} required
+                           placeholder={'Логин'} width={232}/>
+                    <Input className={'header-input-search'}
                            value={password} onChange={(e) => {
                         dispatch(setPassword(e.target.value))
                     }}
-                           props={{placeholder: 'Пароль', type: "text"}} width={232}/>
+                           placeholder={'Пароль'} type={'number'} width={232}/>
                     <div className={'auth-form-checkbox'}>
                         <input type="checkbox"/>&nbsp;<span>{" Запомнить"}</span></div>
                     <Button onClick={setLogins} className={'auth-form-button'}>Войти</Button>

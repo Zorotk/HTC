@@ -10,12 +10,6 @@ import Button from "../../Components/button/button";
 
 const DescriptionPage = () => {
     const {showDescription, films, loading, login, filmsComments, auth} = useSelector(({film}) => film)
-    // const showDescription = useSelector(state => state.film.showDescription)
-    // const films = useSelector(state => state.film.films)
-    // const loading = useSelector(state => state.film.loading)
-    // const login = useSelector(state => state.film.login)
-    // const filmsComments = useSelector(state => state.film.filmsComments)
-    // const auth = useSelector(state => state.film.auth)
     const dispatch = useDispatch()
     const [inputValue, setinputValue] = useState('')
     const [token,] = useLocalStorage('tokenLogin')
@@ -67,28 +61,26 @@ const DescriptionPage = () => {
                     <h2>Комментарии</h2>
                 </div>
 
-                    {auth ? <form className={'description-comment-layout'}>
+                {auth ? <form className={'description-comment-layout'}>
                     <textarea onChange={(e) => setinputValue(e.target.value)} className={'description-input'}
                               placeholder={'Введите комментарий...'} name="comments"
                               id="" cols="30" rows="10"></textarea>
-                        <Button onClick={formHandler}>Опубликовать</Button>
-                    </form> : ""}
-                    {loading ? <div>Loading...</div> : <div>
-                        {filmsComments.map(({id, comment, avtor}) =>
-                            (
-                                <div key={id} className={'description-comment-layout'}>
-                                    <div className={'description-comment-body'}>
-                                        <div className={'description-comment-body-name'}>{avtor}</div>
-                                        <div className="description-comment">{comment}</div>
-                                    </div>
-                                    {login === avtor && auth ? <span onClick={() => dispatch(fetchDeletedComment(id))}
-                                                                     className="description-comment-x">X</span> : ""}
+                    <Button onClick={formHandler}>Опубликовать</Button>
+                </form> : ""}
+                {loading ? <div>Loading...</div> : <div>
+                    {filmsComments.map(({id, comment, avtor}) =>
+                        (
+                            <div key={id} className={'description-comment-layout'}>
+                                <div className={'description-comment-body'}>
+                                    <div className={'description-comment-body-name'}>{avtor}</div>
+                                    <div className="description-comment">{comment}</div>
                                 </div>
-                            )
-                        )}
-                    </div>}
-
-
+                                {login === avtor && auth ? <span onClick={() => dispatch(fetchDeletedComment(id))}
+                                                                 className="description-comment-x">X</span> : ""}
+                            </div>
+                        )
+                    )}
+                </div>}
             </div>
         </div>
 
