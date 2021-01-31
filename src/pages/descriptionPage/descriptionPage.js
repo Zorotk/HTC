@@ -61,12 +61,12 @@ const DescriptionPage = () => {
                     <h2>Комментарии</h2>
                 </div>
 
-                {auth ? <form className={'description-comment-layout'}>
+                {auth && <form className={'description-comment-layout'}>
                     <textarea onChange={(e) => setinputValue(e.target.value)} className={'description-input'}
                               placeholder={'Введите комментарий...'} name="comments"
                               id="" cols="30" rows="10"></textarea>
                     <Button onClick={formHandler}>Опубликовать</Button>
-                </form> : ""}
+                </form>}
                 {loading ? <div>Loading...</div> : <div>
                     {filmsComments.map(({id, comment, avtor}) =>
                         (
